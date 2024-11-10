@@ -4,6 +4,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import StackRoutes from "./stackRoutes";
 import Sobre from "../pages/Sobre";
+import Perfil from "../pages/Perfil";
+import Formulario from "../pages/Formulario";
 
 import Feather from 'react-native-vector-icons/Feather';
 
@@ -40,7 +42,27 @@ export default function Routes(){
                 component={Sobre}
                 options={{
                     tabBarIcon: ({ color, size }) => {
-                        return <Feather name="file-text" color={color} size={size} />
+                        return <Feather name="map" color={color} size={size} />
+                    }
+                }}
+            />
+
+            <Tab.Screen
+                name="Formulário"
+                component={Formulario}
+                options={{
+                    tabBarIcon: ({ color, size }) => {
+                        return <Feather name="file" color={color} size={size} />
+                    }
+                }}
+            />
+
+            <Tab.Screen
+                name="Perfil"
+                component={Perfil}
+                options={{
+                    tabBarIcon: ({ color, size }) => {
+                        return <Feather name="user" color={color} size={size} />
                     }
                 }}
             />

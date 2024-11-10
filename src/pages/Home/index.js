@@ -1,12 +1,15 @@
 import React from "react";
-import { View, Text, StyleSheet, Button, TouchableOpacity } from "react-native";
+import { View, StyleSheet } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
 
 import Swiper from "../../components/Swiper";
 import { ImageSlider } from "../../data/SliderData";
 
-import Feather from 'react-native-vector-icons/Feather';
+import Logo from "../../components/Logo";
+import ButtonHome from "../../components/ButtonHome";
+import BigButtonHome from "../../components/BigButtonHome";
+
 
 export default function Home(){
 
@@ -16,105 +19,85 @@ export default function Home(){
         navigation.navigate('Detalhes')
     }
 
+    function irFormulario(){
+        navigation.navigate('Formulário')
+    }
+
     return(
         <View style={styles.container}>
-            
-            <View style={styles.containerButtonsSuperior}>
-                <TouchableOpacity>
-                    <View>
-                        <Feather name="settings" size={35} color={'grey'}/>
-                    </View>
-                </TouchableOpacity>
 
-                <TouchableOpacity style={styles.buttonSuperior}>
-                    <View>
-                        <Feather name="user" size={30} color={'#fff'}/>
-                    </View>
-                </TouchableOpacity>
+            <View style={styles.logo}>
+                <Logo/>
             </View>
 
-            <View style={{position: 'absolute', height: '85%'}}>
+            <View style={styles.swiper}>
                 <Swiper itemList={ImageSlider}/>
             </View>
             
             <View style={styles.containerButtons}>
 
-                <View style={styles.boxButtons}>
-                    <TouchableOpacity >
-                        <View>
-                            <Feather name="x" size={50} color={'red'}/>
-                        </View>
-                    </TouchableOpacity>
-                </View>
+                <ButtonHome 
+                    funcao={()=>{}}
+                    name={'refresh-ccw'} 
+                    size={25} 
+                    color={'#757575'}
+                />
+                
+                <BigButtonHome 
+                    funcao={()=>{}}
+                    name={'x'} 
+                    size={50} 
+                    color={'#ff4d4d'}
+                />
+                
+                <ButtonHome 
+                    funcao={irDetalhes}
+                    name={'star'} 
+                    size={30} 
+                    color={'#66a3ff'}
+                />
+                
+                <BigButtonHome 
+                    funcao={irFormulario}
+                    name={'heart'} 
+                    size={50} 
+                    color={'#00b300'}
+                />
+                
+                <ButtonHome 
+                    funcao={()=>{}}
+                    name={'zap'} 
+                    size={30} 
+                    color={'#660066'}
+                />
 
-                <View style={styles.boxButtons}>
-                    <TouchableOpacity
-                    onPress={ irDetalhes }
-                    >
-                        <View 
-                            style={{
-                                marginBottom: 15,
-                                backgroundColor: 'grey',
-                                borderRadius: 35,
-                                width: 70,
-                                height: 70,
-                                justifyContent: 'center',
-                                alignItems: 'center'
-                            }}>
-                            <Feather name="file-text" size={60} color={'#fff'}/>
-                        </View>
-                    </TouchableOpacity>
-                </View>                       
-
-                <View style={styles.boxButtons}>
-                    <TouchableOpacity>
-                        <View>
-                            <Feather name="heart" size={50} color={'green'}/>
-                        </View>
-                    </TouchableOpacity>
-                </View>
             </View> 
         </View>
     );
 }
-
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: '#000'
     },
 
-    containerButtonsSuperior: {
-        width: '100%',
-        flexDirection: 'row',
-        justifyContent: 'space-between',      
-        marginTop: 15,
-        padding: 10,
+    logo: {
+        marginTop: -20
     },
 
-    buttonSuperior: {
-        backgroundColor: 'grey', 
-        borderRadius: 20, 
-        width: 40, 
-        height: 40, 
-        alignItems: 'center', 
-        justifyContent: 'center'
+    swiper: {
+        position: 'absolute',
+        height: '85%'
     },
 
     containerButtons: {
         width: '85%',
-        marginTop: 450,
+        marginTop: 510,
         flexDirection: 'row',
         justifyContent: 'space-between'
-    },
-
-    boxButtons: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '30%',
-        height: '105%'
     },
 
 })
